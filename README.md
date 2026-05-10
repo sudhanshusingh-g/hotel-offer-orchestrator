@@ -6,11 +6,12 @@ Node.js microservice that orchestrates hotel offers from multiple suppliers usin
 
 ## Tech Stack
 
-- Node.js + TypeScript
-- Express.js
-- Temporal.io
-- Redis
-- Docker Compose
+![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-000000?logo=express&logoColor=white)
+![Temporal](https://img.shields.io/badge/Temporal-1F1F1F?logo=temporal&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
 
 ## Prerequisites
 
