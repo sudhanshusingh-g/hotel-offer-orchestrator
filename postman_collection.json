@@ -1,0 +1,119 @@
+{
+  "info": {
+    "name": "Hotel Offer Orchestrator",
+    "description": "API tests for hotel orchestration service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Hotels - Delhi (No Filter)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/hotels?city=delhi",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "hotels"],
+          "query": [
+            {
+              "key": "city",
+              "value": "delhi"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Hotels - Delhi with Price Filter",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/hotels?city=delhi&minPrice=5000&maxPrice=6500",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "hotels"],
+          "query": [
+            {
+              "key": "city",
+              "value": "delhi"
+            },
+            {
+              "key": "minPrice",
+              "value": "5000"
+            },
+            {
+              "key": "maxPrice",
+              "value": "6500"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Hotels - Mumbai (No Results)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/hotels?city=mumbai",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "hotels"],
+          "query": [
+            {
+              "key": "city",
+              "value": "mumbai"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Supplier A Hotels",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/supplierA/hotels",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["supplierA", "hotels"]
+        }
+      }
+    },
+    {
+      "name": "Get Supplier B Hotels",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/supplierB/hotels",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["supplierB", "hotels"]
+        }
+      }
+    },
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["health"]
+        }
+      }
+    }
+  ]
+}

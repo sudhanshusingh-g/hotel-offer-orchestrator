@@ -1,0 +1,66 @@
+services:
+  postgres:
+    image: postgres:13
+    container_name: temporal-postgres
+    environment:
+      POSTGRES_USER: temporal
+      POSTGRES_PASSWORD: temporal
+      POSTGRES_DB: temporal
+    ports:
+      - "5432:5432"
+
+  temporal:
+    image: temporalio/auto-setup:1.25.2
+    container_name: hotel-temporal
+    depends_on:
+      - postgres
+    environment:
+      DB: postgres12
+      DB_PORT: 5432
+      POSTGRES_USER: temporal
+      POSTGRES_PWD: temporal
+      POSTGRES_SEEDS: postgres
+    ports:
+      - "7233:7233"
+
+  temporal-ui:
+    image: temporalio/ui:2.21.3
+    container_name: hotel-temporal-ui
+    depends_on:
+      - temporal
+    environment:
+      TEMPORAL_ADDRESS: temporal:7233
+    ports:
+      - "8080:8080"
+
+  redis:
+    image: redis:7
+    container_name: hotel-redis
+    ports:
+      - "6379:6379"
+  app:
+    build: .
+    container_name: hotel-app
+
+    ports:
+      - "3000:3000"
+
+    depends_on:
+      - temporal
+      - redis
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - TEMPORAL_ADDRESS=temporal:7233
+
+  worker:
+    build: .
+    container_name: hotel-worker
+
+    command: npm run worker
+
+    depends_on:
+      - temporal
+      - redis
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - TEMPORAL_ADDRESS=temporal:7233
